@@ -37,10 +37,15 @@
 			<div class="collapse navbar-collapse" id="header-collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="/qnaboard.jsp"> ABOUT US </a>
+						<a href="/qnaboard.jsp" > ABOUT US </a>
 					</li>
 					<li>
-						<a href="/Item/itemboard.jsp">QnA</a>
+						<a href="/Item/itemboard.jsp" >QnA</a>
+					</li>
+					<li>
+						<form action="/BoardServlet" method="post">
+							<button type="submit" class="btn btn-default btn-lg">°Ô½ÃÆÇ</button>
+						</form>
 					</li>
 					<li>
 						<form action="/ItemFrontController" method="post">
@@ -270,6 +275,7 @@
 	  }
 
 	  return unescape(cookieValue);
+
 
   };
 	</script>

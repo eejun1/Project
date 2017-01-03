@@ -20,12 +20,15 @@ public class BoardFrontController {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setCharacterEncoding("EUC-KR");
+
 		String userRequest = request.getParameter("userRequest"); // 파라미터에서 값
 																	// 받아오기
-
 		System.out.println(userRequest); // 리퀘스트 콘솔 출력
 
 		Controller controller = null; // 컨트롤러 객체 생성
+
+		//리퀘스트 요청은 name = "userRequest"
 
 		//리퀘스트 요청 지정
 //		switch (userRequest) { // 사용자 요청에 따라서 서블릿 호출
