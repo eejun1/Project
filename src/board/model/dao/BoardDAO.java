@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import board.dto.BoardDTO;  //boardDTO 를 가져온다
@@ -61,12 +60,11 @@ public class BoardDAO {
         return list;
     }
 
-    public void  insertBoard(BoardDTO boardDTO) throws SQLException {
+    public void  insertBoard(BoardDTO boardDTO) throws SQLException { //게시판 글쓰기
 
         String sql = "Insert Into mydb.qnaboard(qnabdtitle,qnabdcontent,qnabdpw,user_userseq) VALUES(?,?,?,?)";
         Connection conn = null;
         PreparedStatement preparedStatement = null;
-
 
         try {
             conn = dataSource.getConnection();
@@ -75,11 +73,9 @@ public class BoardDAO {
             preparedStatement.setString(2, boardDTO.getQnabdcontent());
             preparedStatement.setInt(3, boardDTO.getQnabdpw());
             preparedStatement.setInt(4, boardDTO.getUser_userseq());
-
             preparedStatement.executeUpdate();
 
         } finally {
-
             databaseUtility.close(preparedStatement, conn);
         }
 

@@ -2,64 +2,78 @@
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="../top.jsp" />
-<div class="container">
+
+<style type="text/css">
+
+	.list {
+		width: 100%;
+	}
+
+	.list thead th {
+		padding: 5px 0;
+		border-top: 1px solid #E5E5E5;
+		border-bottom: 1px solid #E5E5E5;
+		background: #FAF9FA;
+	}
+
+	.list tbody td {
+		text-align: center;
+		padding: 10px 0;
+		border-bottom: 1px solid #E5E5E5;
+	}
+
+
+</style>
+<br>
+<br>
+<br>
+
 	<h1>QnA Board</h1>
 
+<table class="list">
+	<colgroup>
+		<col width="15%"/>
+		<col width="35%"/>
+		<col width="25%"/>
+		<col width="25%"/>
+	</colgroup>
+	<thead>
+	<tr>
+		<th>No.</th>
+		<th>Title</th>
+		<th>Name</th>
+		<th>Date</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>1</td>
+		<td>준원아 왕왕해봐</td>
+		<td>개주인</td>
+		<td>2017-01-06</td>
+	</tr>
+	</tbody>
+</table>
 
-
-	<div class="panel panel-default">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<a href="#"> Title </a>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="panel panel-default">
-							<div class="panel-body">Username</div>
-						</div>
-					</div>
-					<div class="col-xs-4">
-						<div class="panel panel-default">
-							<div class="panel-body">Date</div>
-						</div>
-					</div>
-					<div class="col-xs-4">
-						<div class="panel panel-default">
-							<div class="panel-body">Hits</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="dropup">
-		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">MENU</button>
-		<ul class="dropdown-menu">
-		<core:if test="${!empty sessionScope.memberDTO }">
+<core:if test="${!empty sessionScope.memberDTO }">
+<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">MENU</button>
+	<ul class="dropdown-menu">
 			<li>
 				<a href="/QnaBoard/qnawrite.jsp">글쓰기</a>
 			</li>
+		<core:if test="${sessionScope.memberDTO.admin =='1'}">
+			<li>
+
+				<a href="/BoardDeleteServlet">삭제</a>
+
+			</li>
+
 		</core:if>
-			<li>
-				<a href="#">버튼2</a>
-			</li>
-			<li>
-				<a href="#">버튼3</a>
-			</li>
-		</ul>
-	</div>
-
+	</ul>
 </div>
+</core:if>
 
-<script>
-	$(document).ready(function() {
-		$('[data-toggle="popover"]').popover();
-	});
-</script>
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="project:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/project_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="project" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="mysql-connector-java-5.1.40-bin.jar" module-name="project" />
+          <element id="library" level="module" name="taglibs-standard-jstlel-1.2.5.jar" module-name="project" />
+          <element id="library" level="module" name="jstl-1.2.jar" module-name="project" />
+          <element id="library" level="module" name="commons-collections4-4.1.jar" module-name="project" />
+          <element id="library" level="module" name="commons-dbcp2-2.1.1.jar" module-name="project" />
+          <element id="library" level="module" name="commons-logging-1.2.jar" module-name="project" />
+          <element id="library" level="module" name="commons-pool2-2.4.2.jar" module-name="project" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="project/web/Web" />
+    </root>
+  </artifact>
+</component>

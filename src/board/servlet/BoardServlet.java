@@ -27,7 +27,6 @@ public class BoardServlet extends HttpServlet{
     }
 
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -35,16 +34,16 @@ public class BoardServlet extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-             response.setContentType("text/plain;charset=UTF-8");
-
+          request.setCharacterEncoding("EUC-KR");   //한글 출력 설정 안해주면 깨짐
            HttpSession session = request.getSession();
            MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
            int userSeq = Integer.parseInt(memberDTO.getUserSeq());
 
-            System.out.println(userSeq);
 
-
+           if(memberDTO==null){
+               System.out.println("비로그인 접근");
+               response.sendRedirect("/error.jsp");
+           }
 
         BoardDTO boardDTO = new BoardDTO(request.getParameter("qnabdtitle"), request.getParameter("qnabdcontent"),
                 Integer.parseInt(request.getParameter("qnabdpw")),userSeq);
@@ -53,10 +52,11 @@ public class BoardServlet extends HttpServlet{
             BoardDAO.getInstance().insertBoard(boardDTO);
             response.sendRedirect("/QnaBoard/qnaboard.jsp");
         } catch (SQLException e) {
-            System.out.println("에러 발생");
+
+            request.setAttribute("error_message","오류 발생"+e.getErrorCode()+"에러가 발생했습니다");
+            response.sendRedirect("/error.jsp");
             e.printStackTrace();
         }
-
 
     }
 
