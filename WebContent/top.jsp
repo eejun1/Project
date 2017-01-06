@@ -37,15 +37,13 @@
 			<div class="collapse navbar-collapse" id="header-collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="/qnaboard.jsp" > ABOUT US </a>
+						<a href="/QnaBoard/qnaboard.jsp" > ABOUT US </a>
 					</li>
 					<li>
-						<a href="/Item/itemboard.jsp" >QnA</a>
+						<a href="/Item/itemboard.jsp" >상품 페이지</a>
 					</li>
 					<li>
-						<form action="/BoardServlet" method="post">
-							<button type="submit" class="btn btn-default btn-lg">게시판</button>
-						</form>
+						<a href ="/QnaBoard/qnaboard.jsp"> QnA 페이지</a>
 					</li>
 					<li>
 						<form action="/ItemFrontController" method="post">
@@ -99,7 +97,6 @@
 	<!-- login-modal -->
 	<div id="login-modal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -277,5 +274,5 @@
 	  return unescape(cookieValue);
 
 
-  };
+  }
 	</script>

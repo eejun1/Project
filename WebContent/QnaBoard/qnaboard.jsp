@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=euc-kr" language="java"%>
 
 
-<jsp:include page="top.jsp" />
+<jsp:include page="../top.jsp" />
 <div class="container">
 	<h1>QnA Board</h1>
 
@@ -9,7 +9,7 @@
 		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">MENU</button>
 		<ul class="dropdown-menu">
 			<li>
-				<a href="#">글쓰기</a>
+				<a href="qnawrite">글쓰기</a>
 			</li>
 			<li>
 				<a href="#">버튼2</a>
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-
+</div>
 
 <script>
 	$(document).ready(function() {

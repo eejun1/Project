@@ -60,4 +60,20 @@ public class BoardDAO {
         return list;
     }
 
+    public ArrayList<BoardDTO> insertBoard() throws SQLException{
+        ArrayList<BoardDTO> list = new ArrayList<>();
+        String sql = "Insert Into mydb.qnaboard(qnabdtitle,qnabdcontent,qnabdpw,user_userseq) VALUES(?,?,?,?)";
+        Connection conn=null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        conn = dataSource.getConnection();
+
+        preparedStatement = conn.prepareStatement(sql);
+
+        resultSet = preparedStatement.executeQuery();
+
+
+    }
+
 }
