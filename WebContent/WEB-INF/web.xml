@@ -167,11 +167,11 @@
 		<url-pattern>/AddToCartServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<description></description>
-		<display-name>ModifyItemServlet</display-name>
-		<servlet-name>ModifyItemServlet</servlet-name>
-		<servlet-class>item.servlet.ModifyItemServlet</servlet-class>
-	</servlet>
+	<description></description>
+	<display-name>ModifyItemServlet</display-name>
+	<servlet-name>ModifyItemServlet</servlet-name>
+	<servlet-class>item.servlet.ModifyItemServlet</servlet-class>
+</servlet>
 	<servlet-mapping>
 		<servlet-name>ModifyItemServlet</servlet-name>
 		<url-pattern>/ModifyItemServlet</url-pattern>
@@ -196,4 +196,5 @@
 		<servlet-name>SearchItemServlet</servlet-name>
 		<url-pattern>/SearchItemServlet</url-pattern>
 	</servlet-mapping>
+
 </web-app>

@@ -48,6 +48,7 @@ public class MemberDAO {
 				member = new MemberDTO(resultSet.getString(1), email, resultSet.getString(3),
 						resultSet.getString(4), resultSet.getString(5),
 						resultSet.getString(6), resultSet.getString(7));
+				System.out.println(resultSet.getString(1));
 			}
 		} finally {
 			DatabaseUtility.close(resultSet, preparedStatement, connection);

@@ -27,6 +27,9 @@
 				<th>USERNAME</th>
 				<th>ADDRESS</th>
 				<th>PHONENUMBER</th>
+				<th>Userseq</th>
+				<th>admin</th>
+				<th>password</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,12 +37,17 @@
 
 				<td>${sessionScope.memberDTO.email}</td>
 
-
 				<td>${sessionScope.memberDTO.userName}</td>
 
 				<td>${sessionScope.memberDTO.address}</td>
 
 				<td>${sessionScope.memberDTO.phoneNumber}</td>
+
+				<td>${sessionScope.memberDTO.userSeq}</td>
+
+				<td>${sessionScope.memberDTO.admin}</td>
+
+				<td>${sessionScope.memberDTO.userpw}</td>
 			</tr>
 			<tr>
 		</tbody>

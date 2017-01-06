@@ -2,6 +2,7 @@ package board.servlet;
 
 import board.dto.BoardDTO;
 import board.model.dao.BoardDAO;
+import member.dto.MemberDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,8 @@ public class BoardServlet extends HttpServlet{
         super();
     }
 
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -33,6 +36,26 @@ public class BoardServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+             response.setContentType("text/plain;charset=UTF-8");
+
+           HttpSession session = request.getSession();
+           MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberDTO");
+           int userSeq = Integer.parseInt(memberDTO.getUserSeq());
+
+            System.out.println(userSeq);
+
+
+
+        BoardDTO boardDTO = new BoardDTO(request.getParameter("qnabdtitle"), request.getParameter("qnabdcontent"),
+                Integer.parseInt(request.getParameter("qnabdpw")),userSeq);
+
+        try {
+            BoardDAO.getInstance().insertBoard(boardDTO);
+            response.sendRedirect("/QnaBoard/qnaboard.jsp");
+        } catch (SQLException e) {
+            System.out.println("에러 발생");
+            e.printStackTrace();
+        }
 
 
     }

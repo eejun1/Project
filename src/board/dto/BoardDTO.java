@@ -4,16 +4,23 @@ package board.dto;
 public class BoardDTO {  //게시판 정보 DTO
 
     private int qnabdseq;
-    private  String qnabdtitle;
-    private  String qnabddate;
+    private String qnabdtitle;
+    private String qnabddate;
     private String qnabdcontent;
-    private  int qnabdpw;
+    private int qnabdpw;
     private int user_userseq;
 
     public BoardDTO(int qnabdseq, String qnabdtitle, String qnabddate, String qnabdcontent, int qnabdpw, int user_userseq){
         this.setQnabdseq(qnabdseq);
         this.setQnabdtitle(qnabdtitle);
         this.setQnabddate(qnabddate);
+        this.setQnabdcontent(qnabdcontent);
+        this.setQnabdpw(qnabdpw);
+        this.setUser_userseq(user_userseq);
+    }
+
+    public BoardDTO(String qnabdtitle, String qnabdcontent, int qnabdpw, int user_userseq){ //board 글 삽입때 사용
+        this.setQnabdtitle(qnabdtitle);
         this.setQnabdcontent(qnabdcontent);
         this.setQnabdpw(qnabdpw);
         this.setUser_userseq(user_userseq);
