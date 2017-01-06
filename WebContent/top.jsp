@@ -43,7 +43,9 @@
 						<a href="/Item/itemboard.jsp" >상품 페이지</a>
 					</li>
 					<li>
-						<a href ="/QnaBoard/qnaboard.jsp"> QnA 페이지</a>
+						<form action="/GetAllBoardServlet" method="post">
+							<button type="submit" class="btn btn-default btn-lg">QnA 페이지</button>
+						</form>
 					</li>
 					<li>
 						<form action="/ItemFrontController" method="post">

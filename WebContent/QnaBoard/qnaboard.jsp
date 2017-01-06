@@ -1,3 +1,4 @@
+<%@ page import="java.util.Enumeration" %>
 <%@ page contentType="text/html; charset=euc-kr" language="java"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -39,7 +40,6 @@
 	</colgroup>
 	<thead>
 	<tr>
-		<th>No.</th>
 		<th>Title</th>
 		<th>Name</th>
 		<th>Date</th>
@@ -47,15 +47,14 @@
 	</thead>
 	<tbody>
 	<tr>
-		<td>1</td>
-		<td>¡ÿø¯æ∆ ø’ø’«ÿ∫¡</td>
-		<td>∞≥¡÷¿Œ</td>
-		<td>2017-01-06</td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 	</tbody>
 </table>
 
-<core:if test="${!empty sessionScope.memberDTO }">
+
 <div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">MENU</button>
 	<ul class="dropdown-menu">
@@ -65,14 +64,11 @@
 		<core:if test="${sessionScope.memberDTO.admin =='1'}">
 			<li>
 
-				<a href="/BoardDeleteServlet">ªË¡¶</a>
-
 			</li>
-
 		</core:if>
 	</ul>
 </div>
-</core:if>
+
 
 
 </body>

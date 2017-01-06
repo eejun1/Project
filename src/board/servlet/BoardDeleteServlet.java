@@ -1,5 +1,7 @@
 package board.servlet;
 
+import board.dto.BoardDTO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,7 @@ public class BoardDeleteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
 
         request.setCharacterEncoding("EUC-KR");
 
