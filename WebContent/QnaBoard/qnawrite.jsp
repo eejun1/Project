@@ -48,7 +48,8 @@
 <h1>QnA ±Û¾²±â</h1>
 
 <table class="view" cellpadding="10">
-    <form action="/BoardServlet" method="post" name="write">
+    <form action="/BoardFrontController" method="post" name="write">
+        <input type="hidden" class="form-control" name="userRequest" value ="BoardServlet">
     <colgroup>
         <col width="5%"/>
         <col width="85%"/>
@@ -78,6 +79,7 @@
         <td align="right"><input type="button" value="Cancel" id="cancel" >&nbsp;&nbsp;
             <input type="submit" value="Submit"></td>
     </tr>
+
     </form>
 </table>
 

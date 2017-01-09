@@ -28,10 +28,11 @@ public class BoardDTO {  //게시판 정보 DTO
         this.setQnabdpw(qnabdpw);
         this.setUser_userseq(user_userseq);
     }
-    public BoardDTO(String qnabdtitle,String qnabddate , String username){
+    public BoardDTO(String qnabdtitle,String qnabddate,String username,int qnabdseq){
         this.setQnabdtitle(qnabdtitle);
         this.setQnabddate(qnabddate);
         this.setUserName(username);
+        this.setQnabdseq(qnabdseq);
     }
 
     public String getUserName() {

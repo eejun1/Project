@@ -31,6 +31,7 @@
 
 	<h1>QnA Board</h1>
 
+
 <table class="list">
 	<colgroup>
 		<col width="15%"/>
@@ -43,18 +44,26 @@
 		<th>Title</th>
 		<th>Name</th>
 		<th>Date</th>
+		<th>BoardSeq</th>
 	</tr>
 	</thead>
+<core:forEach items="${requestScope.board_list }" var="list" varStatus="index">
 	<tbody>
+
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td><a href="/BoardFrontController"><input type="hidden" value="">
+			<input type="hidden" name="title" value="${list.qnabdseq}">${list.qnabdtitle}</a></td>
+		<td>${list.userName}</td>
+		<td>${list.qnabddate}</td>
+		<td>${list.qnabdseq}</td>
 	</tr>
+
 	</tbody>
+	</core:forEach>
+
 </table>
 
-
+<core:if test="${!empty sessionScope.memberDTO }">
 <div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">MENU</button>
 	<ul class="dropdown-menu">
@@ -68,6 +77,7 @@
 		</core:if>
 	</ul>
 </div>
+		</core:if>
 
 
 

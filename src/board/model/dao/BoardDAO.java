@@ -34,20 +34,27 @@ public class BoardDAO {
     public ArrayList<BoardDTO> selectAllBoard() throws SQLException {
 
         ArrayList<BoardDTO> list = new ArrayList<>();
-        String sql = "select a.qnabdtitle, a.qnabddate, b.username from qnaboard a  , user b  WHERE user_userseq = userseq";
+        String sql = "select a.qnabdtitle, a.qnabddate, b.username ,a.qnabdseq from qnaboard a  , user b  WHERE user_userseq = userseq";
         Connection conn = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+
 
         try {
             conn = dataSource.getConnection();
             preparedStatement = conn.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
+            //리절트셋 테스트부분
+            if ( resultSet != null){
+                System.out.println("리절트 셋을 받아왔습니다");
+            }else{
+                System.out.println("리절트 셋을 못받아옴");
+            }
+
             while (resultSet.next()) {
 
-                list.add(new BoardDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3)));
+                list.add(new BoardDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getInt(4)));
                 //BoardDTO 를 통해서 해당 칼럼을 가져온다
-//                System.out.print("테스트입니다"+list);
             }
 
         } catch (SQLException e) {

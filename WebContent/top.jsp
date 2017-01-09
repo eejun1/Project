@@ -43,7 +43,8 @@
 						<a href="/Item/itemboard.jsp" >상품 페이지</a>
 					</li>
 					<li>
-						<form action="/GetAllBoardServlet" method="post">
+						<form action="/BoardFrontController" method="post">
+							<input type="hidden" class="form-control" name="userRequest" value ="GetAllBoardServlet">
 							<button type="submit" class="btn btn-default btn-lg">QnA 페이지</button>
 						</form>
 					</li>
