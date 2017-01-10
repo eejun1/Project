@@ -39,17 +39,10 @@ public class BoardDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-
         try {
             conn = dataSource.getConnection();
             preparedStatement = conn.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-            //리절트셋 테스트부분
-            if ( resultSet != null){
-                System.out.println("리절트 셋을 받아왔습니다");
-            }else{
-                System.out.println("리절트 셋을 못받아옴");
-            }
 
             while (resultSet.next()) {
 
@@ -83,6 +76,50 @@ public class BoardDAO {
         } finally {
             databaseUtility.close(preparedStatement, conn);
         }
+
+    }
+
+    public ArrayList<BoardDTO> viewBoard(int qnabdseq) throws SQLException{
+
+        ArrayList<BoardDTO> list = new ArrayList<>();
+        String sql = "select a.qnabdtitle, a.qnabddate, b.username ,a.qnabdseq, a.qnabdpw, a.qnabdcontent " +
+                "from qnaboard a , user b  WHERE qnabdseq=?";
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            conn = dataSource.getConnection();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,qnabdseq);
+//            preparedStatement.executeUpdate();
+
+            resultSet = preparedStatement.executeQuery();
+            //리절트셋 테스트부분
+            if ( resultSet != null){
+                System.out.println("글 보기 리절트 셋을 받아왔습니다");
+            }else{
+                System.out.println("글 보기 리절트 셋을 못받아옴");
+            }
+
+            while (resultSet.next()) {
+
+                list.add(new BoardDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                        resultSet.getInt(4),resultSet.getInt(5),resultSet.getString(6)));
+                //BoardDTO 를 통해서 해당 칼럼을 가져온다
+            }
+            if(list.isEmpty()) {
+                System.out.println(list);
+            }else {
+                System.out.println("리스트 작성완료");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseUtility.close(resultSet, preparedStatement, conn);
+        }
+        return list;
 
     }
 

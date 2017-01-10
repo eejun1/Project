@@ -25,7 +25,7 @@ public class BoardFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("EUC-KR"); //euc-kr 해줘서 인코딩 맞추기
 
 		String userRequest = request.getParameter("userRequest"); // 파라미터에서 값
 																	// 받아오기

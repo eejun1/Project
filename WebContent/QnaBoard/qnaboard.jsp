@@ -1,4 +1,4 @@
-<%@ page import="java.util.Enumeration" %>
+
 <%@ page contentType="text/html; charset=euc-kr" language="java"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -29,6 +29,7 @@
 <br>
 <br>
 
+
 	<h1>QnA Board</h1>
 
 
@@ -51,15 +52,17 @@
 	<tbody>
 
 	<tr>
-		<td><a href="/BoardFrontController"><input type="hidden" value="">
-			<input type="hidden" name="title" value="${list.qnabdseq}">${list.qnabdtitle}</a></td>
+		<td>
+			<a href ="/ViewBoardServlet?qnabdseq=${list.qnabdseq}">${list.qnabdtitle}</a>
+		</td>
 		<td>${list.userName}</td>
 		<td>${list.qnabddate}</td>
 		<td>${list.qnabdseq}</td>
+
 	</tr>
 
 	</tbody>
-	</core:forEach>
+</core:forEach>
 
 </table>
 
@@ -72,7 +75,7 @@
 			</li>
 		<core:if test="${sessionScope.memberDTO.admin =='1'}">
 			<li>
-
+				<a> »èÁ¦ </a>
 			</li>
 		</core:if>
 	</ul>

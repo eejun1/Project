@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lee
-  Date: 2017-01-09
-  Time: 오후 3:14
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=EUC-KR" language="java" session="true"%>
-<% request.setCharacterEncoding("euc-kr"); %>
-<% response.setContentType("text/html; charset=euc-kr"); %>
 
 <jsp:include page="../top.jsp" />
 
@@ -35,7 +28,6 @@
 <br>
 
 
-
 <table class="view" cellpadding="10">
     <colgroup>
         <col width="5%"/>
@@ -45,17 +37,17 @@
     </colgroup>
     <tr>
         <td class="gray"><b>Title</b></td>
-        <td colspan="4"> 타 이 틀</td>
+        <td colspan="4"> </td>
     </tr>
     <tr>
         <td class="gray"><b>Name</b></td>
-        <td> 이 름 </td>
+        <td>  </td>
         <td class="gray"><b>Date</b></td>
-        <td colspan="2"> 날 짜</td>
+        <td colspan="2"></td>
     </tr>
     <tr>
         <td class="gray" height="300px"><b>Content</b></td>
-        <td colspan="4"> 내 용</td>
+        <td colspan="4"></td>
     </tr>
     <tr class="bd_button">
         <td><input type="button" value="List"></td>
@@ -64,6 +56,12 @@
             <input type="button" value="Delete"></td>
     </tr>
 </table>
+<c:forEach items="${requestScope.board_content}" var="list" varStatus="index">
+
+    <h2>${list.qnabddate}</h2>
+    <h2>${list.userName}</h2>
+
+</c:forEach>
 </body>
 </html>
 </body>
