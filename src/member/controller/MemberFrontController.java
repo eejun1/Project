@@ -54,7 +54,7 @@ public class MemberFrontController extends HttpServlet {
 			case "getAllMemberInfoServlet":
 				controller = new GetAllMemberInfoServlet();
 				break;
-			case "RemoveMemberForAdminServlet" :
+			case "RemoveMemberForAdminServlet":
 				controller = new RemoveMemberForAdminServlet();
 				break;
 		}	

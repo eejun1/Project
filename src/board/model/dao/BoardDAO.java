@@ -82,8 +82,7 @@ public class BoardDAO {
     public ArrayList<BoardDTO> viewBoard(int qnabdseq) throws SQLException{
 
         ArrayList<BoardDTO> list = new ArrayList<>();
-        String sql = "select a.qnabdtitle, a.qnabddate, b.username ,a.qnabdseq, a.qnabdpw, a.qnabdcontent " +
-                "from qnaboard a , user b  WHERE qnabdseq=?";
+        String sql = "select a.qnabdtitle, a.qnabddate, b.username ,a.qnabdseq, a.qnabdpw, a.qnabdcontent, a.user_userseq from qnaboard a LEFT JOIN user b ON (a.user_userseq = b.userseq)  WHERE qnabdseq = ?";
         Connection conn = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -105,7 +104,7 @@ public class BoardDAO {
             while (resultSet.next()) {
 
                 list.add(new BoardDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
-                        resultSet.getInt(4),resultSet.getInt(5),resultSet.getString(6)));
+                        resultSet.getInt(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getInt(7)));
                 //BoardDTO 를 통해서 해당 칼럼을 가져온다
             }
             if(list.isEmpty()) {

@@ -13,13 +13,14 @@ public class BoardDTO {  //게시판 정보 DTO
 
     private String userName;
 
-    public BoardDTO( String qnabdtitle, String qnabddate, String userName, int qnabdseq,int qnabdpw , String qnabdcontent){
+    public BoardDTO( String qnabdtitle, String qnabddate, String userName, int qnabdseq,int qnabdpw , String qnabdcontent,int user_userseq){
         this.setQnabdtitle(qnabdtitle);
         this.setQnabddate(qnabddate);
         this.setQnabdcontent(qnabdcontent);
         this.setQnabdpw(qnabdpw);
         this.setUserName(userName);
         this.setQnabdseq(qnabdseq);
+        this.setUser_userseq(user_userseq);
     }
 
     public BoardDTO(String qnabdtitle, String qnabdcontent, int qnabdpw, int user_userseq){ //board 글 삽입때 사용

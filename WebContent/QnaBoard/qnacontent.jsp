@@ -27,7 +27,9 @@
 <br>
 <br>
 
+${sessionScope.memberDTO.userSeq}
 
+<c:forEach items="${requestScope.board_content}" var="list" varStatus="index">
 <table class="view" cellpadding="10">
     <colgroup>
         <col width="5%"/>
@@ -37,29 +39,28 @@
     </colgroup>
     <tr>
         <td class="gray"><b>Title</b></td>
-        <td colspan="4"> </td>
+        <td colspan="4">${list.qnabdtitle} </td>
     </tr>
     <tr>
         <td class="gray"><b>Name</b></td>
-        <td>  </td>
+        <td> ${list.userName}</td>
         <td class="gray"><b>Date</b></td>
-        <td colspan="2"></td>
+        <td colspan="2">${list.qnabddate}</td>
     </tr>
     <tr>
         <td class="gray" height="300px"><b>Content</b></td>
-        <td colspan="4"></td>
+        <td colspan="4">${list.qnabdcontent} 유저 세션 ${list.user_userseq}</td>
     </tr>
     <tr class="bd_button">
         <td><input type="button" value="List"></td>
+        <core:if test="${sessionScope.memberDTO.userSeq} == ${list.user_userseq}">
         <td colspan="2"></td>
         <td align="right"><input type="button" value="Modify">&nbsp;&nbsp;
             <input type="button" value="Delete"></td>
+        </core:if>
     </tr>
 </table>
-<c:forEach items="${requestScope.board_content}" var="list" varStatus="index">
 
-    <h2>${list.qnabddate}</h2>
-    <h2>${list.userName}</h2>
 
 </c:forEach>
 </body>
