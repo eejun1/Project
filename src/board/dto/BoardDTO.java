@@ -13,7 +13,7 @@ public class BoardDTO {  //게시판 정보 DTO
 
     private String userName;
 
-    public BoardDTO( String qnabdtitle, String qnabddate, String userName, int qnabdseq,int qnabdpw , String qnabdcontent,int user_userseq){
+    public BoardDTO(String qnabdtitle, String qnabddate, String userName, int qnabdseq,int qnabdpw , String qnabdcontent,int user_userseq){
         this.setQnabdtitle(qnabdtitle);
         this.setQnabddate(qnabddate);
         this.setQnabdcontent(qnabdcontent);
@@ -34,6 +34,12 @@ public class BoardDTO {  //게시판 정보 DTO
         this.setQnabddate(qnabddate);
         this.setUserName(username);
         this.setQnabdseq(qnabdseq);
+    }
+
+    public BoardDTO(String qnabdtitle,int qnabdpw, String qnabdcontent){
+        this.setQnabdtitle(qnabdtitle);
+        this.setQnabdpw(qnabdpw);
+        this.setQnabdcontent(qnabdcontent);
     }
 
     public String getUserName() {

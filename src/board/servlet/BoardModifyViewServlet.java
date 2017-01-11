@@ -1,8 +1,6 @@
 package board.servlet;
 
-import board.controller.Controller;
 import board.dto.BoardDTO;
-import board.dto.ForwardDTO;
 import board.model.dao.BoardDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -16,15 +14,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by lee on 2017-01-09.
+ * Created by lee on 2017-01-11.
  */
-@WebServlet("/ViewBoardServlet")
-public class ViewBoardServlet extends HttpServlet implements Controller{
+@WebServlet("/BoardModifyViewServlet")
+public class BoardModifyViewServlet extends HttpServlet{
+
     private static final long serialVersionUID =1L;
 
-    public ViewBoardServlet(){
-        super();
-    }
+    public BoardModifyViewServlet(){ super();}
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -36,15 +34,13 @@ public class ViewBoardServlet extends HttpServlet implements Controller{
 
         int qnabdseq = Integer.parseInt(request.getParameter("qnabdseq"));
 
-
         try {
             ArrayList<BoardDTO> list = BoardDAO.getInstance().viewBoard(qnabdseq);
 
             request.setAttribute("board_content",list);
 
-//            response.sendRedirect("/QnaBoard/qnacontent.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/QnaBoard/qnamodifyview.jsp");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/QnaBoard/qnacontent.jsp");
             dispatcher.forward(request,response);
 
         } catch (SQLException e) {
@@ -53,12 +49,5 @@ public class ViewBoardServlet extends HttpServlet implements Controller{
             e.printStackTrace();
         }
 
-    }
-    @Override
-    public ForwardDTO execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ForwardDTO forwardDTO = new ForwardDTO("");
-
-
-        return forwardDTO;
     }
 }

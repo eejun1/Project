@@ -34,7 +34,7 @@ public class BoardDAO {
     public ArrayList<BoardDTO> selectAllBoard() throws SQLException {
 
         ArrayList<BoardDTO> list = new ArrayList<>();
-        String sql = "select a.qnabdtitle, a.qnabddate, b.username ,a.qnabdseq from qnaboard a  , user b  WHERE user_userseq = userseq";
+        String sql = "select a.qnabdtitle, a.qnabddate, b.username, a.qnabdseq from qnaboard a  , user b  WHERE user_userseq = userseq order by a.qnabdseq DESC";
         Connection conn = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -58,7 +58,7 @@ public class BoardDAO {
         return list;
     }
 
-    public void  insertBoard(BoardDTO boardDTO) throws SQLException { //게시판 글쓰기
+    public void insertBoard(BoardDTO boardDTO) throws SQLException { //게시판 글쓰기
 
         String sql = "Insert Into mydb.qnaboard(qnabdtitle,qnabdcontent,qnabdpw,user_userseq) VALUES(?,?,?,?)";
         Connection conn = null;
@@ -78,6 +78,48 @@ public class BoardDAO {
         }
 
     }
+    public void modifyBoard(BoardDTO boardDTO, int boardseq) throws SQLException{
+
+        String sql ="update mydb.qnaboard set qnabdtitle =?, qnabdpw=?, qnabdcontent=? Where qnabdseq=?";
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            conn = dataSource.getConnection();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,boardDTO.getQnabdtitle());
+            preparedStatement.setInt(2,boardDTO.getQnabdpw());
+            preparedStatement.setString(3,boardDTO.getQnabdcontent());
+            preparedStatement.setInt(4,boardseq);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            databaseUtility.close(preparedStatement, conn);
+        }
+    }
+
+    public void deleteBoard(int qnabdseq) throws SQLException{ //게시판 삭제
+
+        String sql ="delete from mydb.qnaboard where qnabdseq=?";
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            conn = dataSource.getConnection();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,qnabdseq);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DatabaseUtility.close(resultSet, preparedStatement, conn);
+        }
+
+    }
 
     public ArrayList<BoardDTO> viewBoard(int qnabdseq) throws SQLException{
 
@@ -94,23 +136,12 @@ public class BoardDAO {
 //            preparedStatement.executeUpdate();
 
             resultSet = preparedStatement.executeQuery();
-            //리절트셋 테스트부분
-            if ( resultSet != null){
-                System.out.println("글 보기 리절트 셋을 받아왔습니다");
-            }else{
-                System.out.println("글 보기 리절트 셋을 못받아옴");
-            }
 
             while (resultSet.next()) {
 
                 list.add(new BoardDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
                         resultSet.getInt(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getInt(7)));
                 //BoardDTO 를 통해서 해당 칼럼을 가져온다
-            }
-            if(list.isEmpty()) {
-                System.out.println(list);
-            }else {
-                System.out.println("리스트 작성완료");
             }
 
         } catch (SQLException e) {
