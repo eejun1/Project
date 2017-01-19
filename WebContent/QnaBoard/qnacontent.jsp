@@ -59,6 +59,11 @@
         <td align="right"><input type="button" value="Modify" onclick="modifycheck()">&nbsp;&nbsp;
             <input type="button" value="Delete" onclick="deletecheck()"></td>
         </core:if>
+        <core:if test="${sessionScope.memberDTO.admin == '1'}">
+            <td colspan="2"></td>
+            <td align="right"><input type="button" value="Modify" onclick="location.href='/BoardModifyViewServlet?qnabdseq=${list.qnabdseq}'">&nbsp;&nbsp;
+                <input type="button" value="Delete" onclick="location.href='/BoardDeleteServlet?qnabdseq=${list.qnabdseq}'"></td>
+        </core:if>
     </tr>
 </table>
 

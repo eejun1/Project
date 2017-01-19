@@ -1,11 +1,9 @@
 package board.servlet;
 
-import board.controller.Controller;
 import board.dto.BoardDTO;
-import board.dto.ForwardDTO;
 import board.model.dao.BoardDAO;
 import member.dto.MemberDTO;
-import member.model.dao.MemberDAO;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

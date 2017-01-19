@@ -82,7 +82,5 @@
 </div>
 		</core:if>
 
-
-
 </body>
 </html>
